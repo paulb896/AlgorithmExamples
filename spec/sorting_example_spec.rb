@@ -1,13 +1,17 @@
 require 'spec_helper'
 describe SortingExample do
   before :each do
-    @input_array = Array(1..9)
-    @sorter = SortingExample.new(@input_array.shuffle)
+    # Leaves option to test with many different sorter setups
+    @input_array_1 = Array(1..99)
+    @sorter = SortingExample.new(@input_array_1.shuffle)
+
+    @input_array_2 = Array(1..2)
+    @sorter2 = SortingExample.new(@input_array_2.shuffle)
   end
   describe "#bucket_sort" do
     it "returns a sorted array" do
-      @sorter = SortingExample.new(@input_array)
-      @sorter.bucket_sort.should eq (@input_array)
+      @sorter.bucket_sort.should eq (@input_array_1)
+      @sorter2.bucket_sort.should eq (@input_array_2)
     end
   end
 end
