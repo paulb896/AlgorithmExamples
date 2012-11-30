@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains 
+ * Contains node and node connection logic.
  */
 class Graph
 {
