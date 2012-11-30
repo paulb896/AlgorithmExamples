@@ -12,3 +12,9 @@ describe PathExample do
     end
   end
 end
+
+describe Connection do
+  describe "#min_distance" do
+    
+  end
+end
