@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Class to build a graph class from a set of edges.
+ * Class to build a graph instance from a set of edges.
  */
 class GraphBuilder
 {
     /**
      * Set class graph or use default graph.
      * 
-     * @param Graph Instance.
+     * @param Graph $graph Instance of graph class.
      */
     public function __construct($graph = null)
     {
@@ -23,7 +23,13 @@ class GraphBuilder
     /**
      * Get a graph containing all parsed edges.
      * 
-     * @param array Edges in format 0 => start, 1 => end, 2 => distance
+     * @param array $edges Edges in format
+     *  array(
+     *      array (0 => start, 1 => end, 2 => distance), // edge 1
+     *      array (0 => start, 1 => end, 2 => distance), // edge 2
+     *      ..
+     *      array (0 => start, 1 => end, 2 => distance) // edge n
+     *  )
      * @return Graph containing all parsed edges.
      */
     public function build($edges)
@@ -35,6 +41,10 @@ class GraphBuilder
         return $this->_graph;
     }
 
+    /**
+     * Instance of Graph.
+     * @var Graph.
+     */
     protected $_graph;
 }
 ?>

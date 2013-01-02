@@ -10,7 +10,8 @@ class ShortestPath
     /**
      * Set graph to search.
      * 
-     * @param Graph Instance.
+     * @param Graph $graph Instance of Graph class.
+     * @return ShortestPah For easy chaining.
      */
     public function __construct($graph)
     {
@@ -23,6 +24,7 @@ class ShortestPath
      * Get information about lowest cost name
      * and distance in an array of nodes.
      * 
+     * @param $connectedNodes array 
      * @return array(string, int)
      */
     public function getLowestCost($connectedNodes)
@@ -36,6 +38,7 @@ class ShortestPath
 
     /**
      * Get shortest path distance between 2 nodes.
+     * Uses implementation of dijkstra's algorithm.
      * 
      * @return int Path distance if one exists, maximum distance otherwise.
      */
@@ -59,31 +62,37 @@ class ShortestPath
             self::MAX_DISTANCE
         );
 
+        // Initialize algorithm to use start node
         $pathDistances[$startNodeName] = 0;
-        $unreadTowns = $pathDistances;
+        $unreadNodes = $pathDistances;
 
-        while(count($unreadTowns) > 0) {
-            list ($lowestCostName, $dist) = $this->getLowestCost($unreadTowns);
+        while(count($unreadNodes) > 0) {
+            list ($lowestCostName, $dist) = $this->getLowestCost($unreadNodes);
             if ($dist == self::MAX_DISTANCE) {
-                $unreadTowns = array();
+                $unreadNodes = array();
                 break;
             } else {
                 $edges = $this->_graph->getConnectedEdgeList($lowestCostName);
-                foreach($edges as $name => $distance) {
-                    $newDistance = $pathDistances[$lowestCostName] + $distance;
+                foreach($edges as $connectedNodeName => $connectedNodeDistance) {
+                    $newDistance = $pathDistances[$lowestCostName] + $connectedNodeDistance;
                     if ($pathDistances[$name] > $newDistance
                         || ($pathDistances[$name] == 0)
                     ) {
-                        $pathDistances[$name] = $newDistance;
-                        $unreadTowns[$name] = $newDistance;
+                        $pathDistances[$connectedNodeName] = $newDistance;
+                        $unreadNodes[$connectedNodeName] = $newDistance;
                     }
                 }
-                unset($unreadTowns[$lowestCostName]);
+                unset($unreadNodes[$lowestCostName]);
             }
         }
+
         return $pathDistances[$endNodeName];
     }
 
+    /**
+     * Instance of graph class.
+     * @var Graph
+     */
     private $_graph;    
 }
 ?>

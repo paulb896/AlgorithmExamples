@@ -19,7 +19,7 @@ class Graph
     /**
      * Get all node names.
      * 
-     * @return array of town names.
+     * @return array Town names.
      */
     public function getNodeNames()
     {
@@ -45,8 +45,9 @@ class Graph
     }
 
     /**
-     * Get array of edges connected to a node.
+     * Get array of edges connected to a given node.
      * 
+     * @param string $name Name of node.
      * @return array Edges as key, distance as value.
      */
     public function getConnectedEdgeList($name)
@@ -58,8 +59,8 @@ class Graph
      * Add start and end nodes if they don't already exist
      * and create an edge between them.
      * 
-     * @param string $startName Start
-     * @param string $endName Destination
+     * @param string $startName Start node name.
+     * @param string $endName Destination node name.
      * @param int $distance From start to end node
      */
     public function addEdge($startName, $endName, $distance)

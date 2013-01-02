@@ -1,15 +1,17 @@
 <?php
 /**
  * Tests for GraphBuilder class.
- * Needs Story TestCase extension for phpunit.
+ * Dependency:  Story TestCase extension for phpunit.
  */
-class GraphBuilderTest extends PHPUnit_Extensions_Story_TestCase
+class PahFindBehaviourTest extends PHPUnit_Extensions_Story_TestCase
 {
     /**
      * Test scenerio of loading edges from file
      * and finding the shortest distance path between
      * nodes.
-     * 
+     * @param string $startNode Start node name
+     * @param string $endNode End node name
+     * @param int $distance Distance between nodes
      * @dataProvider expectedPaths
      */
     public function testShortestDistance($startNode, $endNode, $distance)
@@ -23,6 +25,7 @@ class GraphBuilderTest extends PHPUnit_Extensions_Story_TestCase
     }
 
     /**
+     * Data provider for ShortestDistance test.
      * @return array
      */
     public function expectedPaths()
