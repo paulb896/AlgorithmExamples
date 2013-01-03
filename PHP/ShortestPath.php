@@ -11,7 +11,7 @@ class ShortestPath
      * Set graph to search.
      * 
      * @param Graph $graph Instance of Graph class.
-     * @return ShortestPah For easy chaining.
+     * @return ShortestPath For easy chaining.
      */
     public function __construct($graph)
     {
