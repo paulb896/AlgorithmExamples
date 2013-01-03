@@ -1,9 +1,10 @@
 <?php
 /**
- * Tests for GraphBuilder class.
+ * Tests that cover all graph classes.
+ * 
  * Dependency:  Story TestCase extension for phpunit.
  */
-class PahFindBehaviourTest extends PHPUnit_Extensions_Story_TestCase
+class PathFindBehaviourTest extends PHPUnit_Extensions_Story_TestCase
 {
     /**
      * Test scenerio of loading edges from file
